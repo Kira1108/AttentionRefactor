@@ -2,13 +2,14 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.layers import Input, LSTM, Embedding, Dense, Bidirectional
 
-class Encoder(tf.keras.models.Model):
+class Encoder(tf.keras.layers.Layer):
+    """Encode a sequence of length T, vocab size V, embedding dimension D and hidden states M"""
     def __init__(self, T, V, D, M, **kwargs):
         super().__init__(**kwargs)
         self.embedding = Embedding(V, D, input_length = T)
         self.lstm = Bidirectional(LSTM(M, return_sequences = True))
 
-    def __call__(self, inputs):
+    def call(self, inputs):
         x = self.embedding(inputs)
         x = self.lstm(x)
         return x
