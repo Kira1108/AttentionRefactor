@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from tensorflow.keras.layers import Input, LSTM, Embedding, Dense, Bidirectional
+from tensorflow.keras.layers import LSTM, Embedding, Bidirectional
 
 class Encoder(tf.keras.layers.Layer):
     """Encode a sequence of length T, vocab size V, embedding dimension D and hidden states M"""
